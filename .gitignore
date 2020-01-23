@@ -1,0 +1,18 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Eclipse Files
+.settings
+.classpath
+.project
+bin
+
+# VSCode Files
+.vscode
+
+#Bot Files
+media
+botconfig.json

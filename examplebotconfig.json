@@ -1,0 +1,10 @@
+{
+    
+    "token": "YourDiscordBotToken",
+    "loadcommands": true,
+    "owner": "151474961825923072",
+    "youtubekey": "YoutubeAPIKey",
+    "dname": "DISTAPIName",
+    "dtoken": "DISTAPIToken"
+    
+}
