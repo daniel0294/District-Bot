@@ -39,6 +39,7 @@ public class APIHelper {
 
     private static Integer coins = null;
     private static String dailyMessage = "";
+    private static String coinFlipMessage = "";
 
     public static Integer getCoins(String id) {
 
@@ -118,6 +119,39 @@ public class APIHelper {
         sync.doWait();
 
         return dailyMessage;
+    }
+
+    public static String coinFlip(String id, int coins, int flip){
+        coinFlipMessage = "test";
+        String[] params = { "user_id=" + id, "coins=" + coins, "flip=" + flip};
+        WebUtils.ins.getJSONObject(buildGETURL("coinflip", params)).async((json) ->{
+
+            JsonNode jsonUrl = json.get("won");
+            String won = jsonUrl.toString().substring(1, jsonUrl.toString().length() - 1);
+
+            jsonUrl = json.get("coins");
+            int newCoins = Integer.parseInt(jsonUrl.toString());
+
+            jsonUrl = json.get("won_coins");
+            int wonCoins = Integer.parseInt(jsonUrl.toString().substring(1, jsonUrl.toString().length() - 1));
+
+            
+            
+            if (won.equals("yes")) {
+                coinFlipMessage = "Congrats you won `" + wonCoins + "`\nYou now have `" + newCoins + "` coins.";
+            } else if (won.equals("no")) {
+                coinFlipMessage = "Oops you lost `" + wonCoins + "`\nYou now have `" + newCoins + "` coins.";
+            } else {
+                coinFlipMessage = "yoo wtf";
+            }
+
+            System.out.println(won);
+            
+
+            sync.doNotify();
+        });
+        sync.doWait();
+        return coinFlipMessage;
     }
 
     private static String buildGETURL(String uri, String[] params) {

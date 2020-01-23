@@ -41,6 +41,8 @@ import com.districtmeps.bot.commands.mod.PreviewDMCommand;
 import com.districtmeps.bot.commands.mod.PurgeCommand;
 import com.districtmeps.bot.commands.mod.SendDMCommand;
 import com.districtmeps.bot.commands.mod.UnbanCommand;
+import com.districtmeps.bot.commands.money.CoinFlipCommand;
+import com.districtmeps.bot.commands.money.CoinsCommand;
 import com.districtmeps.bot.commands.music.JoinCommand;
 import com.districtmeps.bot.commands.music.LeaveCommand;
 import com.districtmeps.bot.commands.music.NowPlayingCommand;
@@ -50,7 +52,6 @@ import com.districtmeps.bot.commands.music.SkipCommand;
 import com.districtmeps.bot.commands.music.StopCommand;
 import com.districtmeps.bot.commands.music.VolumeCommand;
 import com.districtmeps.bot.commands.music.YTSearchCommand;
-import com.districtmeps.bot.commands.normal.CoinsCommand;
 import com.districtmeps.bot.commands.normal.GitHubCommand;
 import com.districtmeps.bot.commands.normal.HelpCommand;
 import com.districtmeps.bot.commands.normal.PingCommand;
@@ -102,7 +103,6 @@ public class CommandManager {
             addCommand(new UserInfoCommand());
             addCommand(new ServerInfoCommand());
             addCommand(new UptimeCommand());
-            addCommand(new CoinsCommand());
             addCommand(new GitHubCommand());
 
             // Music    4
@@ -116,7 +116,7 @@ public class CommandManager {
             addCommand(new YTSearchCommand(waiter));
             addCommand(new VolumeCommand());
 
-            //Fun 5
+            // Fun   5
             addCommand(new CatCommand());
             addCommand(new DogCommand());
             addCommand(new MemeCommand());
@@ -126,7 +126,7 @@ public class CommandManager {
             addCommand(new KitsuneCommand());
             addCommand(new NekoCommand());
 
-            //NSFW 6
+            // NSFW  6
             addCommand(new HNekoCommand());
             addCommand(new TrapCommand());
             addCommand(new PussyCommand());
@@ -134,10 +134,15 @@ public class CommandManager {
             addCommand(new HBlastCommand());
             addCommand(new HentaiCommand());
 
-            //Holo 7
+            // Holo  7
             addCommand(new HoloLewdCommand());
             addCommand(new HoloCommand());
             addCommand(new HoloEroCommand());
+
+            // Money 8
+            addCommand(new CoinsCommand());
+            addCommand(new CoinFlipCommand());
+
         }
     }
 

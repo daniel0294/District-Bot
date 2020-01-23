@@ -40,7 +40,7 @@ public class MainScheduler extends SimpleScheduleBuilder {
         Trigger hourlyTrigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger").startNow()
                 .withSchedule(withIntervalInHours(1).repeatForever()).build();
 
-        Trigger dailyTrigger = TriggerBuilder.newTrigger().withIdentity("DailyTrigger").startNow().withSchedule(dailyAtHourAndMinute(00, 13)).build();
+        Trigger dailyTrigger = TriggerBuilder.newTrigger().withIdentity("DailyTrigger").startNow().withSchedule(dailyAtHourAndMinute(00, 00)).build();
 
         Scheduler s = StdSchedulerFactory.getDefaultScheduler();
         // Scheduler r = StdSchedulerFactory.getDefaultScheduler();

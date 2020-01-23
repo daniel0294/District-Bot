@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.districtmeps.bot.commands.normal;
+package com.districtmeps.bot.commands.money;
 
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class CoinsCommand implements ICommand {
 
     @Override
     public int getType() {
-        return 3;
+        return 8;
     }
 
 }

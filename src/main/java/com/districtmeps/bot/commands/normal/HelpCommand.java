@@ -40,6 +40,7 @@ public class HelpCommand implements ICommand {
     private String funDesc = "";
     private String nsfwDesc = "";
     private String holoDesc = "";
+    private String moneyDesc = "";
 
     public HelpCommand(CommandManager manager) {
         this.manager = manager;
@@ -54,6 +55,7 @@ public class HelpCommand implements ICommand {
         funDesc = "";
         nsfwDesc = "";
         holoDesc = "";
+        moneyDesc = "";
         
 
         if (args.isEmpty()) {
@@ -87,6 +89,7 @@ public class HelpCommand implements ICommand {
         List<ICommand> funCommands = new ArrayList<>();
         List<ICommand> nsfwCommands = new ArrayList<>();
         List<ICommand> holoCommands = new ArrayList<>();
+        List<ICommand> moneyCommands = new ArrayList<>();
         
 
         
@@ -118,6 +121,8 @@ public class HelpCommand implements ICommand {
                 case 7:
                     holoCommands.add(command);
                     break;
+                case 8:
+                    moneyCommands.add(command);
                 default:
                     normCommands.add(command);
                     break;
@@ -146,6 +151,9 @@ public class HelpCommand implements ICommand {
         holoCommands.forEach((command)->{
             this.holoDesc += "`" + command.getInvoke() + "`\n";
         });
+        moneyCommands.forEach((command)->{
+            this.moneyDesc += "`" + command.getInvoke() + "`\n";
+        });
 
         
 
@@ -154,11 +162,12 @@ public class HelpCommand implements ICommand {
         builder.addField("Owner Commands", ownerDesc, false);
         builder.addField("Mod Commands", modDesc, true);
         builder.addField("Normal Commands", normDesc, true);
+        builder.addField("Money Commands", moneyDesc, true);
         builder.addField("Music Commands", musicDesc, true);
         builder.addField("Fun Commands", funDesc, true);
         builder.addField("Neko.life Hentai Commands", nsfwDesc, true);
         builder.addField("Holo Commands", holoDesc, true);
-        builder.addField("Extra", "Shoutout to neko.life for neko/nsfw/holo api calls", true);
+        builder.addField("Extra", "Shoutout to neko.life for neko/nsfw/holo api calls", false);
 
         // TODO: Make a permission check to see if the bot can send embeds if not, just
         // plain text
