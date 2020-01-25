@@ -40,6 +40,7 @@ public class APIHelper {
     private static Integer coins = null;
     private static String dailyMessage = "";
     private static String coinFlipMessage = "";
+    private static Boolean payMessage = false;
 
     public static Integer getCoins(String id) {
 
@@ -88,7 +89,7 @@ public class APIHelper {
             String message = jsonUrl.toString();
             // System.out.println(message);
 
-            if (message != null) {
+            if (!message.equals("null")) {
                 logger.info(message);
             }
 
@@ -145,13 +146,32 @@ public class APIHelper {
                 coinFlipMessage = "yoo wtf";
             }
 
-            System.out.println(won);
             
 
             sync.doNotify();
         });
         sync.doWait();
         return coinFlipMessage;
+    }
+
+    //This is just a mess
+    public static boolean payCoins(String payerId, String receiverId, int amt){
+        payMessage = false;
+
+        String[] params = { "user_id=" + payerId, "receiver_id=" + receiverId, "coins=" + amt};
+        WebUtils.ins.getJSONObject(buildGETURL("pay_coins", params)).async((json) ->{
+
+            JsonNode jsonUrl = json.get("message");
+            String message = jsonUrl.toString();
+            
+            
+            payMessage = true;
+            
+
+            sync.doNotify();
+        });
+        sync.doWait();
+        return payMessage;
     }
 
     private static String buildGETURL(String uri, String[] params) {

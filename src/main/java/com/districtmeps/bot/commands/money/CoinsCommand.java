@@ -43,12 +43,12 @@ public class CoinsCommand implements ICommand {
 
             builder.setDescription(user.getName() + "#" + user.getDiscriminator() + " has `" + APIHelper.getCoins(user.getId())
                     + "` coins <a:coin:630157923141812245>");
-            builder.setTitle(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator());
+            builder.setTitle("Coins");
         } else if (event.getMessage().getMentionedUsers().size() == 0) {
 
             builder.setDescription("You have `" + APIHelper.getCoins(event.getAuthor().getId())
                     + "` coins <a:coin:630157923141812245>");
-            builder.setTitle(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator());
+            builder.setTitle("Coins");
         } else {
             event.getChannel().sendMessage("Something is not right, check `" + Constants.PREFIX + "help " + getInvoke() + "`").queue();
             return;
