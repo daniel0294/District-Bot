@@ -161,8 +161,8 @@ public class APIHelper {
         String[] params = { "user_id=" + payerId, "receiver_id=" + receiverId, "coins=" + amt};
         WebUtils.ins.getJSONObject(buildGETURL("pay_coins", params)).async((json) ->{
 
-            JsonNode jsonUrl = json.get("message");
-            String message = jsonUrl.toString();
+            // JsonNode jsonUrl = json.get("message");
+            // String message = jsonUrl.toString();
             
             
             payMessage = true;

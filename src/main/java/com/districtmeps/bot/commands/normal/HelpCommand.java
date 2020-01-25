@@ -123,6 +123,7 @@ public class HelpCommand implements ICommand {
                     break;
                 case 8:
                     moneyCommands.add(command);
+                    break;
                 default:
                     normCommands.add(command);
                     break;
