@@ -41,6 +41,7 @@ public class HelpCommand implements ICommand {
     private String nsfwDesc = "";
     private String holoDesc = "";
     private String moneyDesc = "";
+    private String distDesc = "";
 
     public HelpCommand(CommandManager manager) {
         this.manager = manager;
@@ -56,6 +57,7 @@ public class HelpCommand implements ICommand {
         nsfwDesc = "";
         holoDesc = "";
         moneyDesc = "";
+        distDesc = "";
         
 
         if (args.isEmpty()) {
@@ -90,6 +92,7 @@ public class HelpCommand implements ICommand {
         List<ICommand> nsfwCommands = new ArrayList<>();
         List<ICommand> holoCommands = new ArrayList<>();
         List<ICommand> moneyCommands = new ArrayList<>();
+        List<ICommand> distCommands = new ArrayList<>();
         
 
         
@@ -124,6 +127,9 @@ public class HelpCommand implements ICommand {
                 case 8:
                     moneyCommands.add(command);
                     break;
+                case 9:
+                    distCommands.add(command);
+                    break;
                 default:
                     normCommands.add(command);
                     break;
@@ -155,6 +161,9 @@ public class HelpCommand implements ICommand {
         moneyCommands.forEach((command)->{
             this.moneyDesc += "`" + command.getInvoke() + "`\n";
         });
+        distCommands.forEach((command) ->{
+            this.distDesc += "`" + command.getInvoke() + "`\n";
+        });
 
         
 
@@ -162,6 +171,7 @@ public class HelpCommand implements ICommand {
 
         builder.addField("Owner Commands", ownerDesc, false);
         builder.addField("Mod Commands", modDesc, true);
+        builder.addField("District Commands", distDesc, true);
         builder.addField("Normal Commands", normDesc, true);
         builder.addField("Money Commands", moneyDesc, true);
         builder.addField("Music Commands", musicDesc, true);

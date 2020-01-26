@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import com.districtmeps.bot.commands.district.LogoCommand;
 import com.districtmeps.bot.commands.fun.CatCommand;
 import com.districtmeps.bot.commands.fun.DogCommand;
 import com.districtmeps.bot.commands.fun.EventWaiterExampleCommand;
@@ -146,6 +147,9 @@ public class CommandManager {
             addCommand(new CoinFlipCommand());
             addCommand(new PayCommand());
             addCommand(new DailyCoinsCommand());
+
+            // District 9
+            addCommand(new LogoCommand());
 
         }
     }
