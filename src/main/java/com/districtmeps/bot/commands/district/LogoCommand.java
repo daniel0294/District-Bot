@@ -34,6 +34,7 @@ public class LogoCommand implements ICommand {
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
         if(!event.getGuild().getId().equals("296844096813793281")){
             event.getChannel().sendMessage("This command can only be used in the District Discord Server");
+            return;
         }
 
         EmbedBuilder builder = EmbedUtils.defaultEmbed();
