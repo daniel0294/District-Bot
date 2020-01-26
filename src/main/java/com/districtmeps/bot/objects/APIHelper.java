@@ -41,6 +41,7 @@ public class APIHelper {
     private static String dailyMessage = "";
     private static String coinFlipMessage = "";
     private static Boolean payMessage = false;
+    private static String dailyCoinsMessage = "";
 
     public static Integer getCoins(String id) {
 
@@ -173,6 +174,28 @@ public class APIHelper {
         sync.doWait();
         return payMessage;
     }
+
+    public static String dailyCoins(String id){
+
+        dailyCoinsMessage = "";
+
+        String[] params = { "user_id=" + id};
+        WebUtils.ins.getJSONObject(buildGETURL("daily_coins", params)).async((json) ->{
+
+            JsonNode jsonUrl = json.get("message");
+            String message = jsonUrl.toString();
+            
+            dailyCoinsMessage = message.substring(1, message.length() - 1);
+            
+            
+            
+
+            sync.doNotify();
+        });
+        sync.doWait();
+        return dailyCoinsMessage;
+    }
+    
 
     private static String buildGETURL(String uri, String[] params) {
 

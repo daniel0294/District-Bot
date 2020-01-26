@@ -43,6 +43,7 @@ import com.districtmeps.bot.commands.mod.SendDMCommand;
 import com.districtmeps.bot.commands.mod.UnbanCommand;
 import com.districtmeps.bot.commands.money.CoinFlipCommand;
 import com.districtmeps.bot.commands.money.CoinsCommand;
+import com.districtmeps.bot.commands.money.DailyCoinsCommand;
 import com.districtmeps.bot.commands.money.PayCommand;
 import com.districtmeps.bot.commands.music.JoinCommand;
 import com.districtmeps.bot.commands.music.LeaveCommand;
@@ -144,6 +145,7 @@ public class CommandManager {
             addCommand(new CoinsCommand());
             addCommand(new CoinFlipCommand());
             addCommand(new PayCommand());
+            addCommand(new DailyCoinsCommand());
 
         }
     }
