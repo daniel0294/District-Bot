@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package com.districtmeps.bot.commands.district;
+package com.districtmeps.bot.commands.district.meps;
 
 import java.util.List;
+import java.util.Map;
 
-import com.districtmeps.bot.config.Config;
+import com.districtmeps.bot.objects.APIHelper;
 import com.districtmeps.bot.objects.ICommand;
 
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 /**
- * LogoCommajnd
+ * MepsCommand
  */
-public class LogoCommand implements ICommand {
+public class GetMepsCommand implements ICommand {
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
@@ -44,21 +46,34 @@ public class LogoCommand implements ICommand {
         //     return;
         // }
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
-        builder.setTitle("District Logos").setThumbnail("https://www.districtmeps.com/media/img/whitemountaincropped.png").setDescription(Config.getInstance().getString("distlogo"));
+        EmbedBuilder embed = EmbedUtils.defaultEmbed();
 
-        event.getChannel().sendMessage(builder.build()).queue();
+        embed.setTitle("Current Active Meps", "https://districtmeps.com/meps");
+        
+        Message msg = event.getChannel().sendMessage(embed.build()).complete();
+
+        List<Map<String, String>> meps = APIHelper.getMeps();
+
+        for (Map<String,String> mep : meps) {
+            String value= "Mep id: `" + mep.get("id") + "`\nParts: `" + mep.get("parts") + "`";
+            embed.addField(mep.get("name"), value, false);
+        }
+        
+
+        msg.editMessage(embed.build()).queue();
+
+        
 
     }
 
     @Override
     public String getHelp() {
-        return "Sends the District Logo Mega Link. Can only be used in the District Server";
+        return "Sends a list of all the meps currently in the database";
     }
 
     @Override
     public String getInvoke() {
-        return "logo";
+        return "meps";
     }
 
     @Override

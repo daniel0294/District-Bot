@@ -25,6 +25,9 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import com.districtmeps.bot.commands.district.LogoCommand;
+import com.districtmeps.bot.commands.district.meps.CreateMepCommand;
+import com.districtmeps.bot.commands.district.meps.GetMepsCommand;
+import com.districtmeps.bot.commands.district.meps.MepInfoCommand;
 import com.districtmeps.bot.commands.fun.CatCommand;
 import com.districtmeps.bot.commands.fun.DogCommand;
 import com.districtmeps.bot.commands.fun.EventWaiterExampleCommand;
@@ -88,11 +91,11 @@ public class CommandManager {
         if (Config.getInstance().getBoolean("loadcommands")) {
             System.out.println("Loading Commands");
 
-            // Owner    1
+            // Owner 1
             addCommand(new EvalCommand());
             addCommand(new ShardInfoCommand());
 
-            // Moderation   2
+            // Moderation 2
             addCommand(new KickCommand());
             addCommand(new BanCommand());
             addCommand(new UnbanCommand());
@@ -100,7 +103,7 @@ public class CommandManager {
             addCommand(new SendDMCommand());
             addCommand(new PreviewDMCommand());
 
-            // Normal   3
+            // Normal 3
             addCommand(new PingCommand());
             addCommand(new HelpCommand(this));
             addCommand(new UserInfoCommand());
@@ -108,7 +111,7 @@ public class CommandManager {
             addCommand(new UptimeCommand());
             addCommand(new GitHubCommand());
 
-            // Music    4
+            // Music 4
             addCommand(new JoinCommand());
             addCommand(new LeaveCommand());
             addCommand(new PlayCommand());
@@ -119,7 +122,7 @@ public class CommandManager {
             addCommand(new YTSearchCommand(waiter));
             addCommand(new VolumeCommand());
 
-            // Fun   5
+            // Fun 5
             addCommand(new CatCommand());
             addCommand(new DogCommand());
             addCommand(new MemeCommand());
@@ -129,7 +132,7 @@ public class CommandManager {
             addCommand(new KitsuneCommand());
             addCommand(new NekoCommand());
 
-            // NSFW  6
+            // NSFW 6
             addCommand(new HNekoCommand());
             addCommand(new TrapCommand());
             addCommand(new PussyCommand());
@@ -137,7 +140,7 @@ public class CommandManager {
             addCommand(new HBlastCommand());
             addCommand(new HentaiCommand());
 
-            // Holo  7
+            // Holo 7
             addCommand(new HoloLewdCommand());
             addCommand(new HoloCommand());
             addCommand(new HoloEroCommand());
@@ -150,6 +153,9 @@ public class CommandManager {
 
             // District 9
             addCommand(new LogoCommand());
+            addCommand(new CreateMepCommand(waiter));
+            addCommand(new GetMepsCommand());
+            addCommand(new MepInfoCommand());
 
         }
     }

@@ -30,6 +30,7 @@ import com.districtmeps.bot.config.Config;
 import com.districtmeps.bot.crono.MainScheduler;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 
+import org.json.JSONException;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,56 +50,39 @@ public class Main {
 
     private final Random random = new Random();
     private static ShardManager sManager = null;
-    
-    
-
+    private static EventWaiter waiter = new EventWaiter();
     private Main() throws IOException {
 
         Config config = new Config(new File("botconfig.json"));
-        EventWaiter waiter = new EventWaiter();
+        
 
         CommandManager commandManager = new CommandManager(waiter);
         Listener listener = new Listener(commandManager);
         Logger logger = LoggerFactory.getLogger(Main.class);
-        
-
-
 
         WebUtils.setUserAgent("Mozilla/5.0 District JDA Bot/Danboi#4961");
-        EmbedUtils.setEmbedBuilder(
-            () -> new EmbedBuilder()
-                .setColor(getRandomColor())
-                .setFooter(Constants.NAME, null)
-                .setTimestamp(Instant.now())
-        );
+        EmbedUtils.setEmbedBuilder(() -> new EmbedBuilder().setColor(getRandomColor()).setFooter(Constants.NAME, null)
+                .setTimestamp(Instant.now()));
 
-        
         try {
             logger.info("Booting");
 
-            // new JDABuilder()
-            //         .setToken(config.getString("token"))
-            //         .setActivity(Activity.playing("New Bot"))
-            //         .addEventListeners(listener)
-            //         .build().awaitReady();
+            // new JDABuilder().setToken(config.getString("token")).setActivity(Activity.playing("New Bot"))
+            //         .addEventListeners(waiter, listener).build().awaitReady();
 
             sManager = new DefaultShardManagerBuilder()
-                    .setToken(config.getString("token"))
-                    //.setShardsTotal(2)
-                    .setActivity(Activity.listening("smooth beats"))
-                    .addEventListeners(waiter, listener)
-                    .build();
-
-            
+            .setToken(config.getString("token"))
+            //.setShardsTotal(2)
+            .setActivity(Activity.listening("smooth beats"))
+            .addEventListeners(waiter, listener)
+            .build();
 
             // shards.setActivity(Activity.playing(""));
-            
-            
-            
-            logger.info("Ready");
-            logger.info(""+LocalDateTime.now().getHour());
 
-        } catch (LoginException e) {
+            logger.info("Ready");
+            logger.info("" + LocalDateTime.now().getHour());
+
+        } catch (LoginException | JSONException e) {
             e.printStackTrace();
         }
 
@@ -134,4 +118,5 @@ public class Main {
     public static List<JDA> getShards(){
         return sManager.getShards();
     }
+
 }

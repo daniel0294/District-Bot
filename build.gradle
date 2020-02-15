@@ -35,7 +35,7 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 
-    compile 'net.dv8tion:JDA:4.0.0_46'
+    compile 'net.dv8tion:JDA:4.1.1_105'
     compile 'com.jagrosh:jda-utilities-commons:3.0.2'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     implementation group: 'com.github.duncte123', name: 'botCommons', version: 'c6f9262'
