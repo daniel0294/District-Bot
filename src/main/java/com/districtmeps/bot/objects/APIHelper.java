@@ -292,15 +292,17 @@ public class APIHelper {
             mep.put("messageId", node.get("message_id").asText());
             mep.put("completed", node.get("completed").asText());
 
-            mep.forEach((k, v) ->{
-                System.out.println(k + " || " + v);
-            });
+            // mep.forEach((k, v) ->{
+            //     System.out.println(k + " || " + v);
+            // });
 
             sync.doNotify();
         });
         sync.doWait();
         return mep;
     }
+
+    
 
     private static String buildGETURL(String uri, String[] params) {
 

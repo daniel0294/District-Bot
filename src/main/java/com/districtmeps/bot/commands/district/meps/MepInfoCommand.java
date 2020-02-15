@@ -75,6 +75,7 @@ public class MepInfoCommand implements ICommand {
         if(mep.get("error").equals("true")){
             msg.getChannel().deleteMessageById(msg.getId()).queue();   
             event.getChannel().sendMessage(mep.get("message")).queue();
+            return;
         }
 
         boolean completed;

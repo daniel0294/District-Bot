@@ -55,7 +55,11 @@ public class GetMepsCommand implements ICommand {
         List<Map<String, String>> meps = APIHelper.getMeps();
 
         for (Map<String,String> mep : meps) {
-            String value= "Mep id: `" + mep.get("id") + "`\nParts: `" + mep.get("parts") + "`";
+            boolean completed = mep.get("completed").equals("1") ? true : false;
+            
+            String value= "Mep id: `" + mep.get("id") 
+            + "`\nServer: " + event.getJDA().getGuildById(mep.get("server")).getName() 
+            + "\nParts: `" + mep.get("parts") + "`";
             embed.addField(mep.get("name"), value, false);
         }
         

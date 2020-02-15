@@ -180,6 +180,13 @@ public class HelpCommand implements ICommand {
         builder.addField("Holo Commands", holoDesc, true);
         builder.addField("Extra", "Shoutout to neko.life for neko/nsfw/holo api calls", false);
 
+        String avatar = event.getJDA().getSelfUser().getAvatarUrl();
+        if(avatar == null){
+            avatar = event.getJDA().getSelfUser().getDefaultAvatarUrl();
+        }
+        
+        builder.setThumbnail(avatar);
+
         // TODO: Make a permission check to see if the bot can send embeds if not, just
         // plain text
         event.getChannel().sendMessage(builder.build()).queue();
