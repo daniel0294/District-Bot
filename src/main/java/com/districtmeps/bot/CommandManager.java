@@ -28,6 +28,7 @@ import com.districtmeps.bot.commands.district.LogoCommand;
 import com.districtmeps.bot.commands.district.meps.CreateMepCommand;
 import com.districtmeps.bot.commands.district.meps.GetMepsCommand;
 import com.districtmeps.bot.commands.district.meps.MepInfoCommand;
+import com.districtmeps.bot.commands.district.meps.PartsCommand;
 import com.districtmeps.bot.commands.fun.CatCommand;
 import com.districtmeps.bot.commands.fun.DogCommand;
 import com.districtmeps.bot.commands.fun.EventWaiterExampleCommand;
@@ -156,6 +157,7 @@ public class CommandManager {
             addCommand(new CreateMepCommand(waiter));
             addCommand(new GetMepsCommand());
             addCommand(new MepInfoCommand());
+            addCommand(new PartsCommand());
 
         }
     }

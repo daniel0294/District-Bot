@@ -22,11 +22,11 @@ package com.districtmeps.bot;
 public class Constants {
 
     //TEST
-    // public static final String PREFIX = "d?";
+    public static final String PREFIX = "d?";
 
 
     //LIVE
-    public static final String PREFIX = "d!";
+    // public static final String PREFIX = "d!";
 
     public static final long YTSEARCH = 5;
 

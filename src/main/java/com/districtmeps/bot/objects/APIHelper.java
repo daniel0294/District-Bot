@@ -50,6 +50,7 @@ public class APIHelper {
     private static int mepId = 0;
     private static List<Map<String, String>> meps = null;
     private static Map<String, String> mep = null;
+    private static Map<String, Object> parts = null;
 
     public static Integer getCoins(String id) {
 
@@ -302,7 +303,67 @@ public class APIHelper {
         return mep;
     }
 
-    
+    public static Map<String, Object> getParts(int mepId){
+        SyncronizeObj sync1 = new SyncronizeObj();
+
+        parts = new HashMap<String, Object>();
+
+        String[] params = { "mep_id=" + mepId };
+        WebUtils.ins.getJSONObject(buildGETURL("get_parts", params)).async((json) -> {
+
+            if(json.get("error").asText().equals("true")){
+                parts.put("error", "true");
+                parts.put("message", json.get("message").asText());
+
+                sync.doNotify();
+                return;
+            }
+
+            parts.put("error", "false");
+            
+
+
+            Map<String, String> partsMep = APIHelper.getMep(mepId);
+            int partsCount = Integer.parseInt(partsMep.get("parts"));
+            parts.put("mepName", partsMep.get("name"));
+            parts.put("count", partsMep.get("parts"));
+
+
+            JsonNode node = json.get("parts");
+
+            for(int i = 1; i <= partsCount; i++){
+                Map<String, String> part = new HashMap<>();
+                JsonNode partAPI = node.get("" + i);
+                if(partAPI.asText() == "null"){
+                    part = null;
+                    
+                } else {
+
+                    // logger.info(node.get("" + i).get("user_id").asText());
+
+                    part.put("userId", partAPI.get("user_id").asText());
+                    part.put("mepId", partAPI.get("mep_id").asText());
+                    part.put("part", partAPI.get("part").asText());
+                    part.put("videoLink", partAPI.get("video_link").asText());
+                    part.put("done", partAPI.get("done").asText());
+                    
+
+                }
+                parts.put(i + "", part);
+                
+
+            }
+
+
+
+
+            sync1.doNotify();
+        });
+        sync1.doWait();
+        return parts;
+    }
+
+     
 
     private static String buildGETURL(String uri, String[] params) {
 
@@ -314,7 +375,7 @@ public class APIHelper {
             }
         }
 
-        // System.out.println(url);
+        System.out.println(url);
         return url;
 
     }
