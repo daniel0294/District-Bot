@@ -84,25 +84,30 @@ public class SendDMCommand implements ICommand {
         // event.getChannel().sendMessage(message).queue();
 
         membersWithRole.forEach((mem) -> {
-            mem.getUser().openPrivateChannel().queue((channel) -> {
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
-                        .setTitle("A message from " + event.getAuthor().getName() + " aka "
-                                + event.getMember().getNickname() + " to members with role: `" + mentionedRole.getName()
-                                + "`");
-                builder.setDescription("\n" + message);
-                channel.sendMessage(builder.build()).queue(success -> {
-                    goodSends++;
-                    count++;
-                }, failure -> {
-                    count++;
-                    badSends++;
-                    // System.out.println(failure.getMessage());
-                    failedSendsMap.put(mem.getUser(), failure.getMessage());
-                    // System.out.println(failedSendsMap.size());
+            if (!(mem.getUser().getId().equals(event.getJDA().getSelfUser().getId()))) {
+
+                mem.getUser().openPrivateChannel().queue((channel) -> {
+                    EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                            .setTitle("A message from " + event.getAuthor().getName() + " aka "
+                                    + event.getMember().getNickname() + " to members with role: `"
+                                    + mentionedRole.getName() + "`");
+                    builder.setDescription("\n" + message);
+                    channel.sendMessage(builder.build()).queue(success -> {
+                        goodSends++;
+                        count++;
+                    }, failure -> {
+                        count++;
+                        badSends++;
+                        // System.out.println(failure.getMessage());
+                        failedSendsMap.put(mem.getUser(), failure.getMessage());
+                        // System.out.println(failedSendsMap.size());
+                    });
+
+                    // System.out.println(count);
                 });
-                
-                // System.out.println(count);
-            });
+            } else {
+                count++;
+            }
 
             sync.doNotify();
         });
@@ -114,9 +119,11 @@ public class SendDMCommand implements ICommand {
             sync.doWait(3000);
 
         }
-        event.getChannel().sendMessage("Completed..sent message: \n`" + message + "`\n to " + (membersWithRole.size() - badSends) + "/"
-                + membersWithRole.size() + " users with role: `" + mentionedRole.getName() + "`").queue();
-        
+        event.getChannel()
+                .sendMessage("Completed..sent message: \n`" + message + "`\n to " + (membersWithRole.size() - badSends)
+                        + "/" + membersWithRole.size() + " users with role: `" + mentionedRole.getName() + "`")
+                .queue();
+
         // System.out.println(count);
         // System.out.println(failedSendsMap.size());
         if (failedSendsMap.size() > 0) {
@@ -128,7 +135,6 @@ public class SendDMCommand implements ICommand {
 
             event.getChannel().sendMessage(builder.build()).queue();
         }
-        
 
     }
 
