@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
 
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message.Attachment;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 /**
@@ -88,8 +89,37 @@ public class APIHelper {
             pfp = member.getUser().getDefaultAvatarUrl();
         }
 
-        String[] params = { "user_id=" + userId, "user_name=" + name, "user_pfp=" + pfp };
-        WebUtils.ins.getJSONObject(buildGETURL("user_has_spoken", params)).async((json) -> {
+        String messageContent = event.getMessage().getContentRaw();
+        String messageId = event.getMessage().getId();
+        String channelId = event.getChannel().getId();
+        String attachments = "";
+        
+
+        if(event.getMessage().getAttachments() == null){
+            attachments = null;
+        } else {
+            for (Attachment a : event.getMessage().getAttachments() ){
+                attachments += a.getUrl() + ",";
+            }
+        }
+
+        String embed = "" + ((event.getMessage().getEmbeds().size() > 0) ? 1 : 0);
+        String server = event.getGuild().getName();
+        String serverId =  event.getGuild().getId();
+
+
+        String[] params = { 
+            "user_id=" + userId, 
+            "user_name=" + name, 
+            "user_pfp=" + pfp, 
+            "message= " + messageContent,
+            "message_id=" + messageId,
+            "channel_id=" + channelId,
+            "attachments=" + attachments,
+            "embed=" + embed,
+            "server_name=" + server,
+            "server_id=" + serverId};
+        WebUtils.ins.getJSONObject(buildGETURL("user_has_spoken_v2", params)).async((json) -> {
 
             // JsonNode jsonUrl = json.get("error");
             // String error = jsonUrl.toString();
@@ -375,7 +405,7 @@ public class APIHelper {
             }
         }
 
-        System.out.println(url);
+        // System.out.println(url);
         return url;
 
     }
