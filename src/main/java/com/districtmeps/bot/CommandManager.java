@@ -55,6 +55,7 @@ import com.districtmeps.bot.commands.music.LeaveCommand;
 import com.districtmeps.bot.commands.music.NowPlayingCommand;
 import com.districtmeps.bot.commands.music.PlayCommand;
 import com.districtmeps.bot.commands.music.QueueCommand;
+import com.districtmeps.bot.commands.music.ShuffleCommand;
 import com.districtmeps.bot.commands.music.SkipCommand;
 import com.districtmeps.bot.commands.music.StopCommand;
 import com.districtmeps.bot.commands.music.VolumeCommand;
@@ -122,6 +123,7 @@ public class CommandManager {
             addCommand(new NowPlayingCommand());
             addCommand(new YTSearchCommand(waiter));
             addCommand(new VolumeCommand());
+            addCommand(new ShuffleCommand());
 
             // Fun 5
             addCommand(new CatCommand());

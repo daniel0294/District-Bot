@@ -18,6 +18,7 @@ package com.districtmeps.bot.commands.music;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 
 import com.districtmeps.bot.music.GuildMusicManager;
@@ -41,7 +42,7 @@ public class QueueCommand implements ICommand {
         TextChannel channel = event.getChannel();
         PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(event.getGuild());
-        BlockingQueue<AudioTrack> queue = musicManager.scheduler.getQueue();
+        Queue<AudioTrack> queue = musicManager.scheduler.getQueue();
 
 
         if(queue.isEmpty()){
