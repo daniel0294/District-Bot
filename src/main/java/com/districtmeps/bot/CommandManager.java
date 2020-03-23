@@ -53,6 +53,7 @@ import com.districtmeps.bot.commands.money.PayCommand;
 import com.districtmeps.bot.commands.music.JoinCommand;
 import com.districtmeps.bot.commands.music.LeaveCommand;
 import com.districtmeps.bot.commands.music.NowPlayingCommand;
+import com.districtmeps.bot.commands.music.PauseCommand;
 import com.districtmeps.bot.commands.music.PlayCommand;
 import com.districtmeps.bot.commands.music.QueueCommand;
 import com.districtmeps.bot.commands.music.ShuffleCommand;
@@ -124,6 +125,7 @@ public class CommandManager {
             addCommand(new YTSearchCommand(waiter));
             addCommand(new VolumeCommand());
             addCommand(new ShuffleCommand());
+            addCommand(new PauseCommand());
 
             // Fun 5
             addCommand(new CatCommand());

@@ -19,8 +19,6 @@ package com.districtmeps.bot.commands.music;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-
 import com.districtmeps.bot.music.GuildMusicManager;
 import com.districtmeps.bot.music.PlayerManager;
 import com.districtmeps.bot.objects.ICommand;

@@ -42,7 +42,7 @@ public class NowPlayingCommand implements ICommand {
         AudioPlayer player = musicManager.player;
 
         if(player.getPlayingTrack() == null){
-            channel.sendMessage("The Player is not playing any song");
+            channel.sendMessage("The Player is not playing any song").queue();
             return;
         }
 
