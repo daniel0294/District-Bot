@@ -158,10 +158,10 @@ public class CommandManager {
 
             // District 9
             addCommand(new LogoCommand());
-            addCommand(new CreateMepCommand(waiter));
-            addCommand(new GetMepsCommand());
-            addCommand(new MepInfoCommand());
-            addCommand(new PartsCommand());
+            // addCommand(new CreateMepCommand(waiter));
+            // addCommand(new GetMepsCommand());
+            // addCommand(new MepInfoCommand());
+            // addCommand(new PartsCommand());
 
         }
     }
