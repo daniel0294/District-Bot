@@ -161,7 +161,7 @@ public class CommandManager {
             // addCommand(new CreateMepCommand(waiter));
             // addCommand(new GetMepsCommand());
             // addCommand(new MepInfoCommand());
-            // addCommand(new PartsCommand());
+            // addCommand(new PartsCommand()); 
 
         }
     }
