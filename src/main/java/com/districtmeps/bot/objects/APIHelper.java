@@ -89,21 +89,8 @@ public class APIHelper {
             pfp = member.getUser().getDefaultAvatarUrl();
         }
 
-        String messageContent = event.getMessage().getContentRaw();
         String messageId = event.getMessage().getId();
         String channelId = event.getChannel().getId();
-        String attachments = "";
-        
-
-        if(event.getMessage().getAttachments() == null){
-            attachments = null;
-        } else {
-            for (Attachment a : event.getMessage().getAttachments() ){
-                attachments += a.getUrl() + ",";
-            }
-        }
-
-        String embed = "" + ((event.getMessage().getEmbeds().size() > 0) ? 1 : 0);
         String server = event.getGuild().getName();
         String serverId =  event.getGuild().getId();
 
@@ -111,12 +98,9 @@ public class APIHelper {
         String[] params = { 
             "user_id=" + userId, 
             "user_name=" + name, 
-            "user_pfp=" + pfp, 
-            "message= " + messageContent,
+            "user_pfp=" + pfp,
             "message_id=" + messageId,
             "channel_id=" + channelId,
-            "attachments=" + attachments,
-            "embed=" + embed,
             "server_name=" + server,
             "server_id=" + serverId};
         WebUtils.ins.getJSONObject(buildGETURL("user_has_spoken_v2", params)).async((json) -> {
