@@ -83,6 +83,12 @@ class Listener extends ListenerAdapter {
             return;
         }
 
+        if (event.getMessage().getContentRaw().equalsIgnoreCase(Constants.PREFIX + "forceDaily")
+                && event.getAuthor().getId().equals(Config.getInstance().getString("owner"))) {
+            forceDaily();
+            return;
+        }
+
         if (!event.getAuthor().isBot() && !event.getMessage().isWebhookMessage()
                 && event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
             manager.handleCommand(event);
@@ -107,5 +113,9 @@ class Listener extends ListenerAdapter {
     private void shutdown(JDA jda) {
         jda.shutdown();
         System.exit(0);
+    }
+
+    private void forceDaily(){
+        APIHelper.dailyReset();
     }
 }
