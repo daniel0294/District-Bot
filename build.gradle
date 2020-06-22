@@ -39,7 +39,7 @@ dependencies {
     compile 'com.jagrosh:jda-utilities-commons:3.0.2'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     implementation group: 'com.github.duncte123', name: 'botCommons', version: 'c6f9262'
-    compile 'com.sedmelluq:lavaplayer:1.3.22'
+    compile 'com.sedmelluq:lavaplayer:1.3.50'
 
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20190722' 
