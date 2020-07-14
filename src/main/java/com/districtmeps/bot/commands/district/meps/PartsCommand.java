@@ -93,6 +93,8 @@ public class PartsCommand implements ICommand {
                 
                 System.out.println("Reached at " + i);
             }
+
+            @SuppressWarnings("unchecked")
             Map<String, String> part = ((Map<String, String>) partsAPI.get("" + i));
 
             String status = "Open";

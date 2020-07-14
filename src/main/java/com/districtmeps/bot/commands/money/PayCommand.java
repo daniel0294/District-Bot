@@ -52,7 +52,7 @@ public class PayCommand implements ICommand {
         }
 
         mentioned = event.getMessage().getMentionedMembers().get(0);
-        if(mentioned.getUser().isBot() || mentioned.getUser().isFake() || mentioned.getUser().getId().equals(event.getAuthor().getId())){
+        if(mentioned.getUser().isBot() || mentioned.getUser().getId().equals(event.getAuthor().getId())){
             builder.setDescription("You can not send coins to a Bot, Webhook, or Yourself");
 
             event.getChannel().sendMessage(builder.build()).queue();

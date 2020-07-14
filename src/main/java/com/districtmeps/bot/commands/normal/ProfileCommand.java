@@ -18,12 +18,10 @@ package com.districtmeps.bot.commands.normal;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.districtmeps.bot.Constants;
 import com.districtmeps.bot.objects.APIHelper;
 import com.districtmeps.bot.objects.ICommand;
-import com.jagrosh.jdautilities.commons.utils.FinderUtil;
 
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.entities.Member;

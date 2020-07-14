@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.districtmeps.bot.Main;
 import com.districtmeps.bot.config.Config;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -30,7 +29,6 @@ import org.slf4j.LoggerFactory;
 
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.Message.Attachment;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 /**
@@ -410,6 +408,9 @@ public class APIHelper {
 
 
                 JsonNode jsonUrl = json.get("error");
+                if(jsonUrl.asText() == "true"){
+                    System.out.println("super error apihelper saveinsta");
+                }
 
 
 

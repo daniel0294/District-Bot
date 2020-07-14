@@ -51,7 +51,7 @@ class Listener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isFake()) {
+        if (event.getMessage().isWebhookMessage()) {
             return;
         }
 
@@ -73,7 +73,7 @@ class Listener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
-        if (event.getAuthor().isFake()) {
+        if (event.getMessage().isWebhookMessage()) {
             return;
         }
 

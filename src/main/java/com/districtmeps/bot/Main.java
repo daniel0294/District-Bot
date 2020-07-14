@@ -70,13 +70,19 @@ public class Main {
             // new JDABuilder().setToken(config.getString("token")).setActivity(Activity.playing("New Bot"))
             //         .addEventListeners(waiter, listener).build().awaitReady();
 
-            sManager = new DefaultShardManagerBuilder()
-            .setToken(config.getString("token"))
-            //.setShardsTotal(2)
-            .setActivity(Activity.listening("smooth beats"))
-            .addEventListeners(waiter, listener)
-            .build();
+            // sManager = new DefaultShardManagerBuilder().create(intents)
+            // .setToken(config.getString("token"))
+            // //.setShardsTotal(2)
+            // .setActivity(Activity.listening("smooth beats"))
+            // .addEventListeners(waiter, listener)
+            // .build();
 
+            DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(config.getString("token"));
+            builder.setActivity(Activity.listening("smooth beats"));
+            builder.addEventListeners(waiter, listener);
+            sManager = builder.build();
+
+            
             // shards.setActivity(Activity.playing(""));
 
             logger.info("Ready");
