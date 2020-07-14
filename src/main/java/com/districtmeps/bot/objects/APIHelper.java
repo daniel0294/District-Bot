@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.districtmeps.bot.Main;
 import com.districtmeps.bot.config.Config;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -376,6 +377,63 @@ public class APIHelper {
         sync1.doWait();
         return parts;
     }
+
+    public static Map<String, String> getInstaInfo(String id) {
+
+        Map<String, String> instaInfo = new HashMap<>();
+        String[] params = { "user_id=" + id };
+        WebUtils.ins.getJSONObject(buildGETURL("discord_user", params)).async((json) -> {
+
+            JsonNode jsonUrl = json.get("user");
+
+            instaInfo.put("insta", jsonUrl.get("instagram").asText());
+            instaInfo.put("messageId", jsonUrl.get("insta_message_id").asText());
+
+
+            // System.out.println(jsonUrl.get("instagram").asText() +"\n" + jsonUrl.get("insta_message_id").asText() );
+            sync.doNotify();
+
+        });
+        sync.doWait();
+        return instaInfo;
+
+    }
+
+    public static void saveInsta(String id, String instaName, String messageId, GuildMessageReceivedEvent event) {
+
+        try {
+            String[] params = { 
+                "user_id=" + id,
+                "insta_name=" + instaName,
+                "message_id=" + messageId };
+            WebUtils.ins.getJSONObject(buildGETURL("save_insta", params)).async((json) -> {
+
+
+                JsonNode jsonUrl = json.get("error");
+
+
+
+                sync.doNotify();
+
+            });
+            sync.doWait();
+            return;
+
+        } catch (Exception e) {
+            String mes = e.toString();
+            event.getJDA().getUserById("151474961825923072").openPrivateChannel().queue((c)->{
+                c.sendMessage("Insta Save Failed").queue();
+                if (mes.length() > 1999) {
+                    c.sendMessage(mes.substring(0,1998));
+                } else {
+                    c.sendMessage(mes).queue();
+                }
+                
+            });
+        }
+
+    }
+    
 
      
 

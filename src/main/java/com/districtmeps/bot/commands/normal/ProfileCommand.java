@@ -34,34 +34,29 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 /**
  * UserInfoCommand
  */
-public class UserInfoCommand implements ICommand {
+public class ProfileCommand implements ICommand {
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
         
-        if(args.isEmpty()){
-            event.getChannel().sendMessage("Missing arguments, check `" + Constants.PREFIX + "help " + getInvoke() + "`").queue();
-            return;
-        }
-
-        String joined =  String.join("", args);
-        List<User> foundUsers = FinderUtil.findUsers(joined, event.getJDA());
-
-        if(foundUsers.isEmpty()){
-            
-            List<Member> foundMembers = FinderUtil.findMembers(joined, event.getGuild());
-
-            if(foundMembers.isEmpty()){
-                event.getChannel().sendMessage("No users found for `" + joined + "`").queue();
+        String userId = null;
+        if(args.size() > 0){
+            if(event.getMessage().getMentionedUsers().size() != 1){
+                event.getChannel().sendMessage("Incorrect arguments\nPlease check `" + Constants.PREFIX + "help " + getInvoke() + "`\nTip: Only mention one person. No mention needed for youself").queue();
                 return;
+            } else {
+                userId = event.getMessage().getMentionedUsers().get(0).getId();
             }
-
-            foundUsers = foundMembers.stream().map(Member::getUser).collect(Collectors.toList());
+        } else {
+            userId = event.getAuthor().getId();
         }
 
-        User user = foundUsers.get(0);
+        
+        String insta = APIHelper.getInstaInfo(userId).get("insta");
+        User user = event.getJDA().getUserById(userId);
         Member member = event.getGuild().getMember(user);
         String coins = "" + APIHelper.getCoins(user.getId());
+        String instagram = insta == "null" ? "N/A" : insta;
 
         MessageEmbed embed = EmbedUtils.defaultEmbed()
             .setColor(member.getColor())
@@ -69,6 +64,7 @@ public class UserInfoCommand implements ICommand {
             .addField("Username#Discriminator", String.format("%#s", user), true)
             .addField("Display Name", member.getEffectiveName(), true)
             .addField("Coins", coins, true)
+            .addField("Instagram", instagram, true)
             .addField("User Id + Mention", String.format("%s {%s}", user.getId(), user.getAsMention()), true)
             .addField("Account Created", user.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME), true)
             .addField("Guild Joined", member.getTimeJoined().format(DateTimeFormatter.RFC_1123_DATE_TIME), true)
@@ -83,12 +79,12 @@ public class UserInfoCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Displays information about a user.\n" +
-        "Usage: `" + Constants.PREFIX + getInvoke() + " [user name/@user/user id]`";
+        "Usage: `" + Constants.PREFIX + getInvoke() + " <user name/@user/user id>`";
     }
 
     @Override
     public String getInvoke() {
-        return "userinfo";
+        return "profile";
     }
 
     @Override

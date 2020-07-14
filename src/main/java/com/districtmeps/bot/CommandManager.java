@@ -24,7 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import com.districtmeps.bot.commands.district.GetInstaCommand;
 import com.districtmeps.bot.commands.district.LogoCommand;
+import com.districtmeps.bot.commands.district.UpdateInstaComand;
 import com.districtmeps.bot.commands.district.meps.CreateMepCommand;
 import com.districtmeps.bot.commands.district.meps.GetMepsCommand;
 import com.districtmeps.bot.commands.district.meps.MepInfoCommand;
@@ -64,9 +66,9 @@ import com.districtmeps.bot.commands.music.YTSearchCommand;
 import com.districtmeps.bot.commands.normal.GitHubCommand;
 import com.districtmeps.bot.commands.normal.HelpCommand;
 import com.districtmeps.bot.commands.normal.PingCommand;
+import com.districtmeps.bot.commands.normal.ProfileCommand;
 import com.districtmeps.bot.commands.normal.ServerInfoCommand;
 import com.districtmeps.bot.commands.normal.UptimeCommand;
-import com.districtmeps.bot.commands.normal.UserInfoCommand;
 import com.districtmeps.bot.commands.nsfw.FutaCommand;
 import com.districtmeps.bot.commands.nsfw.HBlastCommand;
 import com.districtmeps.bot.commands.nsfw.HNekoCommand;
@@ -109,7 +111,7 @@ public class CommandManager {
             // Normal 3
             addCommand(new PingCommand());
             addCommand(new HelpCommand(this));
-            addCommand(new UserInfoCommand());
+            addCommand(new ProfileCommand());
             addCommand(new ServerInfoCommand());
             addCommand(new UptimeCommand());
             addCommand(new GitHubCommand());
@@ -158,6 +160,8 @@ public class CommandManager {
 
             // District 9
             addCommand(new LogoCommand());
+            addCommand(new UpdateInstaComand());
+            addCommand(new GetInstaCommand());
             // addCommand(new CreateMepCommand(waiter));
             // addCommand(new GetMepsCommand());
             // addCommand(new MepInfoCommand());
