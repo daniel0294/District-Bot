@@ -26,7 +26,7 @@ public class Constants {
 
 
     //LIVE
-    public static final String PREFIX = "d?";
+    public static final String PREFIX = "d!";
 
     public static final long YTSEARCH = 5;
 
