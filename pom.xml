@@ -13,18 +13,27 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+<repositories>
+  <repository>
+    <id>central</id>
+    <name>bintray</name>
+    <url>https://jcenter.bintray.com</url>
+  </repository>
+</repositories>
+
   <dependencies>
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
       <version>4.2.0_178</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.jagrosh</groupId>
       <artifactId>jda-utilities-commons</artifactId>
       <version>3.0.4</version>
       <scope>compile</scope>
-      <type>pom</type>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
@@ -36,6 +45,7 @@
       <groupId>com.sedmelluq</groupId>
       <artifactId>lavaplayer</artifactId>
       <version>1.3.50</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>
@@ -71,6 +81,7 @@
       <groupId>me.duncte123</groupId>
       <artifactId>botCommons</artifactId>
       <version>1.0.88</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
