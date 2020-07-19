@@ -42,6 +42,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.OnlineStatus;
 //import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 // import net.dv8tion.jda.api.sharding.ShardManager;
 import net.dv8tion.jda.api.sharding.ShardManager;
@@ -80,6 +81,7 @@ public class Main {
             DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(config.getString("token"));
             builder.setActivity(Activity.listening("smooth beats"));
             builder.addEventListeners(waiter, listener);
+            builder.enableIntents(GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_MEMBERS);
             sManager = builder.build();
 
             
