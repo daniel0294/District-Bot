@@ -102,7 +102,9 @@ class Listener extends ListenerAdapter {
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
         if (event.getGuild().getId().equals("296844096813793281")) {
             event.getGuild().getSystemChannel()
-                    .sendMessage("Welcome " + event.getUser().getAsMention() + "!!\nPlease tell us your instagram @")
+                    //.sendMessage("Welcome " + event.getUser().getAsMention() + "!!\nPlease tell us your instagram @")
+                    .sendMessage("Welcome " + event.getUser().getAsMention() + "!!\nPlease tell us your instagram @"
+                    + "\nIf you have a chance please also use the d!updateinsta feature in <#402997922767306754> so everyone can know what your instagram @. For more info check pinned in <#296844861976477696>.")
                     .queue();
             System.out.println("FKN TEST WORK");
             // System.out.println(new File("./test.txt").getAbsolutePath());
