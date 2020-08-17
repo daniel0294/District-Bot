@@ -69,9 +69,10 @@ public class GetInstaCommand implements ICommand {
         }
 
 
+        System.out.println(userId);
         EmbedBuilder builder = EmbedUtils.defaultEmbed();
             builder.setTitle("Instagram <:insta:732342758173573152>", "https://instagram.com/" + instaName)
-            .setDescription("Instagram account for " + event.getJDA().getUserById(userId).getAsMention())
+            .setDescription("Instagram account for <@" + userId + ">")
             .addField("Insta @", "@" + instaName, false)
             .setColor(event.getMember().getColor())
             .setThumbnail((new UpdateInstaComand()).getInstaPfp(instaName));
