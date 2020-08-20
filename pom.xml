@@ -29,7 +29,7 @@
     </dependency>
     <dependency>
       <groupId>com.jagrosh</groupId>
-      <artifactId>jda-utilities-commons</artifactId>
+      <artifactId>jda-utilities</artifactId>
       <version>3.0.4</version>
       <type>pom</type>
     </dependency>
