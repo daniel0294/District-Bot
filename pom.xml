@@ -13,16 +13,23 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>bintray</name>
+      <url>https://jcenter.bintray.com</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
-      <version>4.2.0_178</version>
+      <version>4.2.0_194</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.jagrosh</groupId>
-      <artifactId>jda-utilities-commons</artifactId>
+      <artifactId>jda-utilities</artifactId>
       <version>3.0.4</version>
       <scope>compile</scope>
     </dependency>
