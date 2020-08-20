@@ -22,9 +22,7 @@ import com.districtmeps.bot.Constants;
 import com.districtmeps.bot.objects.ICommand;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
