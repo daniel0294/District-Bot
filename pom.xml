@@ -78,8 +78,7 @@
     <dependency>
       <groupId>me.duncte123</groupId>
       <artifactId>botCommons</artifactId>
-      <version>1.0.88</version>
-      <scope>runtime</scope>
+      <version>BETA_2.0.110</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
