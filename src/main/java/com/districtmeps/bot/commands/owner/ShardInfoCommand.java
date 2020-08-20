@@ -36,7 +36,7 @@ public class ShardInfoCommand implements ICommand {
             return;
         }
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
 
         builder.setDescription("This is shard #" + (1+ event.getJDA().getShardInfo().getShardId()) + "\n(not zero indexed)");
         builder.setTitle("Shard Info");

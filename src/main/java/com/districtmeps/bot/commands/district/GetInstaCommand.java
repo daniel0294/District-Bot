@@ -70,7 +70,7 @@ public class GetInstaCommand implements ICommand {
 
 
         System.out.println(userId);
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
             builder.setTitle("Instagram <:insta:732342758173573152>", "https://instagram.com/" + instaName)
             .setDescription("Instagram account for <@" + userId + ">")
             .addField("Insta @", "@" + instaName, false)

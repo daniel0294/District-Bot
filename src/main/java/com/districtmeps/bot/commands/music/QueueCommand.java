@@ -50,7 +50,7 @@ public class QueueCommand implements ICommand {
 
         int trackCount = Math.min(queue.size(), 20);
         List<AudioTrack> tracks = new ArrayList<>(queue);
-        EmbedBuilder builder = EmbedUtils.defaultEmbed()
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
             .setTitle("Current Queue (Total: " + queue.size() + ")");
 
 

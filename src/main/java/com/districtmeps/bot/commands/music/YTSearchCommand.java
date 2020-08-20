@@ -89,7 +89,7 @@ public class YTSearchCommand implements ICommand {
                 return;
             }
 
-            EmbedBuilder builder = EmbedUtils.defaultEmbed().setTitle("YouTube Search Results:");
+            EmbedBuilder builder = EmbedUtils.getDefaultEmbed().setTitle("YouTube Search Results:");
 
             StringBuilder descriptionBuilder = builder.getDescriptionBuilder();
 

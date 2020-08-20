@@ -54,7 +54,7 @@ public class ServerInfoCommand implements ICommand {
         );
 
 
-        EmbedBuilder embed = EmbedUtils.defaultEmbed()
+        EmbedBuilder embed = EmbedUtils.getDefaultEmbed()
                 .setTitle("Server info for " + guild.getName())
                 .setThumbnail(guild.getIconUrl())
                 .addField("General Info", generalInfo, false)

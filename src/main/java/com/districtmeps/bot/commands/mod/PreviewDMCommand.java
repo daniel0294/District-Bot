@@ -68,7 +68,7 @@ public class PreviewDMCommand implements ICommand {
         String[] lines = reason.split("<br>");
         String message = String.join("\n", lines);
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed()
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                 .setTitle("A message from " + event.getAuthor().getName() + " aka " + event.getMember().getNickname()
                         + " to members with role: `" + mentionedRole.getName() + "`");
         builder.setDescription("\n" + message);

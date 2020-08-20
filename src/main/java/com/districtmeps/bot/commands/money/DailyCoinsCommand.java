@@ -31,7 +31,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
  */
 public class DailyCoinsCommand implements ICommand {
 
-    EmbedBuilder builder = EmbedUtils.defaultEmbed();
+    EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {

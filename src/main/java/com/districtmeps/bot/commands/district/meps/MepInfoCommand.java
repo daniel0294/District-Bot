@@ -61,7 +61,7 @@ public class MepInfoCommand implements ICommand {
             return;
         }
 
-        EmbedBuilder embed = EmbedUtils.defaultEmbed();
+        EmbedBuilder embed = EmbedUtils.getDefaultEmbed();
 
         embed.setTitle("Information for Mep `#" + mepId + "`", "https://districtmeps.com/meps/" + mepId).setDescription("Please Wait");
         Message msg = event.getChannel().sendMessage(embed.build()).complete();

@@ -59,7 +59,7 @@ public class CreateMepCommand implements ICommand {
         //     return;
         // }
 
-        EmbedBuilder embed = EmbedUtils.defaultEmbed();
+        EmbedBuilder embed = EmbedUtils.getDefaultEmbed();
 
         event.getChannel().sendMessage(embed.build()).queue((bEmbed) -> {
 

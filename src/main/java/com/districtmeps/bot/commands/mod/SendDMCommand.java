@@ -87,7 +87,7 @@ public class SendDMCommand implements ICommand {
             if (!(mem.getUser().getId().equals(event.getJDA().getSelfUser().getId()))) {
 
                 mem.getUser().openPrivateChannel().queue((channel) -> {
-                    EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                    EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                             .setTitle("A message from " + event.getAuthor().getName() + " aka "
                                     + event.getMember().getNickname() + " to members with role: `"
                                     + mentionedRole.getName() + "`");
@@ -127,7 +127,8 @@ public class SendDMCommand implements ICommand {
         // System.out.println(count);
         // System.out.println(failedSendsMap.size());
         if (failedSendsMap.size() > 0) {
-            EmbedBuilder builder = EmbedUtils.defaultEmbed().setTitle("List of Users I could not send the message to");
+            EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
+                    .setTitle("List of Users I could not send the message to");
             builder.addField("Amount of failed messages", "" + badSends, false);
             failedSendsMap.forEach((k, v) -> {
                 builder.appendDescription("\n" + k.getAsMention() + " | | " + v);

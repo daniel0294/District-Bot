@@ -56,7 +56,7 @@ public class ProfileCommand implements ICommand {
         String coins = "" + APIHelper.getCoins(user.getId());
         String instagram = insta == "null" ? "N/A" : insta;
 
-        MessageEmbed embed = EmbedUtils.defaultEmbed()
+        MessageEmbed embed = EmbedUtils.getDefaultEmbed()
             .setColor(member.getColor())
             .setThumbnail(user.getEffectiveAvatarUrl())
             .addField("Username#Discriminator", String.format("%#s", user), true)

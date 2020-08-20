@@ -35,7 +35,7 @@ public class CoinsCommand implements ICommand {
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
         User user = null;
 
         if (event.getMessage().getMentionedUsers().size() == 1) {

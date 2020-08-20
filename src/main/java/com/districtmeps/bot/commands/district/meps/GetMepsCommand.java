@@ -46,7 +46,7 @@ public class GetMepsCommand implements ICommand {
         //     return;
         // }
 
-        EmbedBuilder embed = EmbedUtils.defaultEmbed();
+        EmbedBuilder embed = EmbedUtils.getDefaultEmbed();
 
         embed.setTitle("Current Active Meps", "https://districtmeps.com/meps");
         

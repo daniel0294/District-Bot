@@ -80,7 +80,7 @@ public class HelpCommand implements ICommand {
 
     private void generateAndSendEmbed(GuildMessageReceivedEvent event) {
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed().setTitle("A list of all my commands:");
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed().setTitle("A list of all my commands:");
 
         //StringBuilder descriptionBuilder = builder.getDescriptionBuilder();
 

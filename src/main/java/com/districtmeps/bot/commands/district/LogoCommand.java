@@ -44,7 +44,7 @@ public class LogoCommand implements ICommand {
         //     return;
         // }
 
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
         builder.setTitle("District Logos").setThumbnail("https://www.districtmeps.com/media/img/whitemountaincropped.png").setDescription(Config.getInstance().getString("distlogo"));
 
         event.getChannel().sendMessage(builder.build()).queue();

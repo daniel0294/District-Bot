@@ -82,16 +82,14 @@ public class UpdateInstaComand implements ICommand {
             }
 
 
-            EmbedBuilder builder = EmbedUtils.defaultEmbed();
+            EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
             builder.setTitle("Instagram <:insta:732342758173573152>", "https://instagram.com/" + instaName)
-            .setDescription("Instagram account for " + event.getAuthor().getAsMention())
-            .addField("Insta @", "@" + instaName, false)
-            .setColor(event.getMember().getColor())
-            .setThumbnail(getInstaPfp(instaName));
-            
-            
+                    .setDescription("Instagram account for " + event.getAuthor().getAsMention())
+                    .addField("Insta @", "@" + instaName, false).setColor(event.getMember().getColor())
+                    .setThumbnail(getInstaPfp(instaName));
+
             // event.getChannel().sendMessage(builder.build()).queue( (m) -> {
-            //     messageId = m.getId();
+            // messageId = m.getId();
             // });
 
             messageId = event.getJDA().getTextChannelById(CHANNELID).sendMessage(builder.build()).complete().getId();
@@ -100,11 +98,12 @@ public class UpdateInstaComand implements ICommand {
 
             APIHelper.saveInsta(event.getAuthor().getId(), instaName, messageId, event);
 
-            event.getChannel().sendMessage("Your instagram tag has been saved and posted in the " + event.getJDA().getTextChannelById(CHANNELID).getAsMention() + " channel").queue();
-            
-        } else if(!userInstaInfo.get("insta").equals("null")){
+            event.getChannel().sendMessage("Your instagram tag has been saved and posted in the "
+                    + event.getJDA().getTextChannelById(CHANNELID).getAsMention() + " channel").queue();
 
-            EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        } else if (!userInstaInfo.get("insta").equals("null")) {
+
+            EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
             builder.setTitle("Instagram <:insta:732342758173573152>", "https://instagram.com/" + instaName)
             .setDescription("Instagram account for " + event.getAuthor().getAsMention())
             .addField("Insta @", "@" + instaName, false)

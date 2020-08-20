@@ -63,7 +63,7 @@ public class PartsCommand implements ICommand {
             return;
         }
 
-        EmbedBuilder embed = EmbedUtils.defaultEmbed();
+        EmbedBuilder embed = EmbedUtils.getDefaultEmbed();
 
         embed.setTitle("Parts Information for Mep `#" + mepId + "`", "https://districtmeps.com/meps/" + mepId)
                 .setDescription("Please Wait");

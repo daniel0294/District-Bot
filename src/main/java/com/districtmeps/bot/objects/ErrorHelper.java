@@ -28,7 +28,7 @@ public class ErrorHelper {
     public static void MessageAdmin(User user, String location, String message) {
 
         user.openPrivateChannel().queue((channel) -> {
-            EmbedBuilder builder = EmbedUtils.defaultEmbed().setTitle("Happened at `" + location + "`");
+            EmbedBuilder builder = EmbedUtils.getDefaultEmbed().setTitle("Happened at `" + location + "`");
             builder.setDescription("\n" + message);
             channel.sendMessage(builder.build()).queue();
         });

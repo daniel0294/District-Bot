@@ -34,7 +34,7 @@ public class PayCommand implements ICommand {
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
         builder.setTitle("Results");
         Member mentioned = null;
         int payCoins = 0;

@@ -33,7 +33,7 @@ public class CoinFlipCommand implements ICommand {
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
-        EmbedBuilder builder = EmbedUtils.defaultEmbed();
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
         builder.setTitle("Results");
         int flipCoins;
         int userCoins;
