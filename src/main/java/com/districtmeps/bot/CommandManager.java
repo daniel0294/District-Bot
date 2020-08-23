@@ -44,6 +44,7 @@ import com.districtmeps.bot.commands.holo.HoloEroCommand;
 import com.districtmeps.bot.commands.holo.HoloLewdCommand;
 import com.districtmeps.bot.commands.mod.BanCommand;
 import com.districtmeps.bot.commands.mod.KickCommand;
+import com.districtmeps.bot.commands.mod.PinsCommand;
 import com.districtmeps.bot.commands.mod.PreviewDMCommand;
 import com.districtmeps.bot.commands.mod.PurgeCommand;
 import com.districtmeps.bot.commands.mod.SendDMCommand;
@@ -107,6 +108,7 @@ public class CommandManager {
             addCommand(new PurgeCommand());
             addCommand(new SendDMCommand());
             addCommand(new PreviewDMCommand());
+            addCommand(new PinsCommand());
 
             // Normal 3
             addCommand(new PingCommand());
