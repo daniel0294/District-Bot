@@ -434,6 +434,24 @@ public class APIHelper {
         }
 
     }
+
+    public static String[] getGitInfo(){
+        String[] info = new String[2];
+        WebUtils.ins.getJSONArray("https://api.github.com/repos/daniel0294/District-Bot/commits").async((json) -> {
+
+            JsonNode commit = json.get(0);
+            System.out.println(commit.asText());
+
+
+            info[0] = commit.get("sha").asText().substring(0, 7);
+            info[1] = commit.get("commit").get("message").asText();
+
+            sync.doNotify();
+        });
+        sync.doWait();
+
+        return info;
+    }
     
 
      

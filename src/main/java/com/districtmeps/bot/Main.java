@@ -28,6 +28,7 @@ import javax.security.auth.login.LoginException;
 
 import com.districtmeps.bot.config.Config;
 import com.districtmeps.bot.crono.MainScheduler;
+import com.districtmeps.bot.objects.APIHelper;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 
 import org.json.JSONException;
@@ -52,6 +53,9 @@ public class Main {
     private final Random random = new Random();
     private static ShardManager sManager = null;
     private static EventWaiter waiter = new EventWaiter();
+
+    public static String gitVersion;
+    public static String gitComment;
     private Main() throws IOException {
 
         Config config = new Config(new File("botconfig.json"));
@@ -100,14 +104,18 @@ public class Main {
             jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB, Activity.playing("at the park || " + Constants.PREFIX + "help"));
         }
 
-        
+        logger.info("Loading Prescence");
+        String[] info = APIHelper.getGitInfo();
+        gitVersion = info[0];
+        gitComment = info[1];
         MainScheduler daily = new MainScheduler();
 		try {
 			daily.start();
 		} catch (SchedulerException e) {
 			
 			e.printStackTrace(); 
-		}
+        }
+        logger.info("Loaded Prescence");
 
     }
 

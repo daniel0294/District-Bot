@@ -36,6 +36,10 @@ public class HourlyAction implements Job {
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
+       
+        
+
+        String extra = "\n" + getSpaces(20) + "Version " + Main.gitVersion + " - " + Main.gitComment;
 
         int hour = LocalDateTime.now().getHour();
 
@@ -44,23 +48,33 @@ public class HourlyAction implements Job {
             switch (hour % 4) {
             case 0:
                 jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB,
-                        Activity.playing("at the park || " + Constants.PREFIX + "help"));
+                        Activity.watching("tv || " + Constants.PREFIX + "help" + extra));
                 break;
             case 1:
                 jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB,
-                        Activity.watching("tv || " + Constants.PREFIX + "help"));
+                        Activity.playing("at the park || " + Constants.PREFIX + "help" + extra));
                 break;
             case 2:
                 jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB,
-                        Activity.playing("at the park || " + Constants.PREFIX + "help"));
+                        Activity.watching("District meps || " + Constants.PREFIX + "help" + extra));
                 break;
             case 3:
                 jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB,
-                        Activity.playing("ball || " + Constants.PREFIX + "help"));
+                        Activity.listening("to smooth beats || " + Constants.PREFIX + "help" + extra));
                 break;
             }
         }
 
+    }
+
+    private String getSpaces(int num){
+        String spaces = "";
+
+        for (int i = 0; i < num; i++) {
+            spaces += "\u3000";
+        }
+
+        return spaces;
     }
 
 }
