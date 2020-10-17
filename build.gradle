@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
 
     compile 'net.dv8tion:JDA:4.2.0_194'
     compile 'com.jagrosh:jda-utilities:3.0.4'
