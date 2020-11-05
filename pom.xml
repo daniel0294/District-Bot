@@ -24,13 +24,13 @@
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
-      <version>4.2.0_194</version>
+      <version>4.2.0_214</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.jagrosh</groupId>
       <artifactId>jda-utilities</artifactId>
-      <version>3.0.4</version>
+      <version>3.0.5</version>
       <type>pom</type>
     </dependency>
     <dependency>
@@ -42,19 +42,19 @@
     <dependency>
       <groupId>com.sedmelluq</groupId>
       <artifactId>lavaplayer</artifactId>
-      <version>1.3.50</version>
+      <version>1.3.55</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20190722</version>
+      <version>20200518</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-jsr223</artifactId>
-      <version>3.0.0-beta-3</version>
+      <version>3.0.6</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>me.duncte123</groupId>
       <artifactId>botCommons</artifactId>
-      <version>BETA_2.0.110</version>
+      <version>2.0.119</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
