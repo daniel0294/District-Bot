@@ -70,11 +70,11 @@ import com.districtmeps.bot.commands.normal.PingCommand;
 import com.districtmeps.bot.commands.normal.ProfileCommand;
 import com.districtmeps.bot.commands.normal.ServerInfoCommand;
 import com.districtmeps.bot.commands.normal.UptimeCommand;
-import com.districtmeps.bot.commands.nsfw.FutaCommand;
-import com.districtmeps.bot.commands.nsfw.HBlastCommand;
+// import com.districtmeps.bot.commands.nsfw.FutaCommand;
+// import com.districtmeps.bot.commands.nsfw.HBlastCommand;
 import com.districtmeps.bot.commands.nsfw.HNekoCommand;
 import com.districtmeps.bot.commands.nsfw.HentaiCommand;
-import com.districtmeps.bot.commands.nsfw.PussyCommand;
+// import com.districtmeps.bot.commands.nsfw.PussyCommand;
 import com.districtmeps.bot.commands.nsfw.TrapCommand;
 import com.districtmeps.bot.commands.owner.EvalCommand;
 import com.districtmeps.bot.commands.owner.ShardInfoCommand;
@@ -144,9 +144,9 @@ public class CommandManager {
             // NSFW 6
             addCommand(new HNekoCommand());
             addCommand(new TrapCommand());
-            addCommand(new PussyCommand());
-            addCommand(new FutaCommand());
-            addCommand(new HBlastCommand());
+            // addCommand(new PussyCommand());
+            // addCommand(new FutaCommand());
+            // addCommand(new HBlastCommand());
             addCommand(new HentaiCommand());
 
             // Holo 7
