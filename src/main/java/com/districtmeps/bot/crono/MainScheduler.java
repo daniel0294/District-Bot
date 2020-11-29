@@ -43,7 +43,6 @@ public class MainScheduler extends SimpleScheduleBuilder {
         Trigger dailyTrigger = TriggerBuilder.newTrigger().withIdentity("DailyTrigger").startNow().withSchedule(dailyAtHourAndMinute(00, 00)).build();
 
         Scheduler s = StdSchedulerFactory.getDefaultScheduler();
-        // Scheduler r = StdSchedulerFactory.getDefaultScheduler();
 
         s.start();
         s.scheduleJob(hourlyAction, hourlyTrigger);

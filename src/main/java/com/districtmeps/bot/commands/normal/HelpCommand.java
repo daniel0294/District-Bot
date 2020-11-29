@@ -98,7 +98,6 @@ public class HelpCommand implements ICommand {
         
 
         manager.getCommands().forEach((command) -> {
-            //descriptionBuilder.append('`').append(command.getInvoke()).append("`\n");
 
             int type = command.getType();
 

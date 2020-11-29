@@ -57,14 +57,7 @@ public class APIHelper {
         coins = null;
         String[] params = { "user_id=" + id };
         WebUtils.ins.getJSONObject(buildGETURL("discord_user", params)).async((json) -> {
-            // JsonNode jsonUrl = json.get("count");
-            // String count = jsonUrl.toString();
-
-            // if (Integer.parseInt(count) < 1) {
-            // sync.doNotify();
-            // System.out.println("person not in system");
-            // return;
-            // }
+            
             JsonNode jsonUrl = json.get("user").get("coins");
             String webCoins = jsonUrl.toString();
             webCoins = webCoins.substring(1, webCoins.length() - 1);
@@ -104,25 +97,12 @@ public class APIHelper {
             "server_id=" + serverId};
         WebUtils.ins.getJSONObject(buildGETURL("user_has_spoken_v2", params)).async((json) -> {
 
-            // JsonNode jsonUrl = json.get("error");
-            // String error = jsonUrl.toString();
-            // System.out.println("test");
-
             JsonNode jsonUrl = json.get("message");
             String message = jsonUrl.toString();
-            // System.out.println(message);
 
             if (!message.equals("null")) {
                 logger.info(message);
             }
-
-            // if (error != null) {
-            // ErrorHelper.MessageAdmin(event.getJDA().getUserById(Config.getInstance().getString("owner")),
-            // "APIHelper.java>APIHelper>UserHasSpoken(GuildMessageReceivedEvent event)",
-            // error);
-            // }
-
-            // System.out.println("ETSTETST");
 
         });
         return;
@@ -180,8 +160,6 @@ public class APIHelper {
         String[] params = { "user_id=" + payerId, "receiver_id=" + receiverId, "coins=" + amt };
         WebUtils.ins.getJSONObject(buildGETURL("pay_coins", params)).async((json) -> {
 
-            // JsonNode jsonUrl = json.get("message");
-            // String message = jsonUrl.toString();
 
             payMessage = true;
 
@@ -234,7 +212,6 @@ public class APIHelper {
 
             for (int i = 0; i < size; i++) {
                 JsonNode node = json.get(i);
-                // System.out.println("Test test look" + node.get("id").toString());
 
                 Map<String, String> mep = new HashMap<>();
 
@@ -291,7 +268,6 @@ public class APIHelper {
             }
 
             JsonNode node = json.get("mep");
-            // System.out.println(node.get("server").asText());
 
 
             mep.put("error", "false");
@@ -306,9 +282,6 @@ public class APIHelper {
             mep.put("messageId", node.get("message_id").asText());
             mep.put("completed", node.get("completed").asText());
 
-            // mep.forEach((k, v) ->{
-            //     System.out.println(k + " || " + v);
-            // });
 
             sync.doNotify();
         });
@@ -352,7 +325,6 @@ public class APIHelper {
                     
                 } else {
 
-                    // logger.info(node.get("" + i).get("user_id").asText());
 
                     part.put("userId", partAPI.get("user_id").asText());
                     part.put("mepId", partAPI.get("mep_id").asText());
@@ -387,8 +359,6 @@ public class APIHelper {
             instaInfo.put("insta", jsonUrl.get("instagram").asText());
             instaInfo.put("messageId", jsonUrl.get("insta_message_id").asText());
 
-
-            // System.out.println(jsonUrl.get("instagram").asText() +"\n" + jsonUrl.get("insta_message_id").asText() );
             sync.doNotify();
 
         });
@@ -466,7 +436,6 @@ public class APIHelper {
             }
         }
 
-        // System.out.println(url);
         return url;
 
     }

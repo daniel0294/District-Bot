@@ -36,7 +36,6 @@ public class MemeCommand implements ICommand {
             MessageEmbed embed = EmbedUtils.embedImage(url)
                     .setTitle(data.get("title").asText(), data.get("url").asText())
                     .build();
-            //TODO: Make a permission check to see if the bot can send embeds if not, send plain text
             event.getChannel().sendMessage(embed).queue();
         });
     }

@@ -45,19 +45,12 @@ public class EventWaiterExampleCommand implements ICommand {
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
         TextChannel channel = event.getChannel();
-    //    long channelId = channel.getIdLong();
 
         channel.sendMessage("Please react with " + EMOJI).queue((message) -> {
             message.addReaction(EMOJI).queue();
             message.addReaction(event.getJDA().getEmoteById(emoteId)).queue();
             initWaiter(message.getIdLong(), channel.getIdLong(), event.getJDA().getShardManager());
         });
-
-       
-
-        // Message message = action.complete();
-
-
 
         channel.sendMessage("test").queue();
 

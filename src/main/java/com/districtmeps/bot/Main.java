@@ -41,11 +41,9 @@ import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.OnlineStatus;
-//import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
-// import net.dv8tion.jda.api.sharding.ShardManager;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class Main {
@@ -72,16 +70,6 @@ public class Main {
         try {
             logger.info("Booting");
 
-            // new JDABuilder().setToken(config.getString("token")).setActivity(Activity.playing("New Bot"))
-            //         .addEventListeners(waiter, listener).build().awaitReady();
-
-            // sManager = new DefaultShardManagerBuilder().create(intents)
-            // .setToken(config.getString("token"))
-            // //.setShardsTotal(2)
-            // .setActivity(Activity.listening("smooth beats"))
-            // .addEventListeners(waiter, listener)
-            // .build();
-
             DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(config.getString("token"));
             builder.setActivity(Activity.listening("smooth beats"));
             builder.addEventListeners(waiter, listener);
@@ -89,7 +77,6 @@ public class Main {
             sManager = builder.build();
 
             
-            // shards.setActivity(Activity.playing(""));
 
             logger.info("Ready");
             logger.info("" + LocalDateTime.now().getHour());
@@ -100,7 +87,6 @@ public class Main {
 
         for(JDA jda: sManager.getShards()){
             
-            // int shardNum = jda.getShardInfo().getShardId();
             jda.getShardManager().setPresence(OnlineStatus.DO_NOT_DISTURB, Activity.playing("at the park || " + Constants.PREFIX + "help"));
         }
 

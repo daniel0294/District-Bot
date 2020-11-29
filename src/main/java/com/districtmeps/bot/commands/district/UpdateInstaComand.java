@@ -67,12 +67,8 @@ public class UpdateInstaComand implements ICommand {
             return;
         }
 
-        // event.getChannel().sendMessage("This instagram account does exist").queue();
-
-       
 
         Map<String, String> userInstaInfo = APIHelper.getInstaInfo(event.getAuthor().getId());
-        // System.out.println(userInstaInfo.get("insta").equals(null));
 
         if(userInstaInfo.get("messageId").equals("null")){
 
@@ -88,13 +84,8 @@ public class UpdateInstaComand implements ICommand {
                     .addField("Insta @", "@" + instaName, false).setColor(event.getMember().getColor())
                     .setThumbnail(getInstaPfp(instaName));
 
-            // event.getChannel().sendMessage(builder.build()).queue( (m) -> {
-            // messageId = m.getId();
-            // });
 
             messageId = event.getJDA().getTextChannelById(CHANNELID).sendMessage(builder.build()).complete().getId();
-
-            // event.getChannel().sendMessage(messageId).queue();
 
             APIHelper.saveInsta(event.getAuthor().getId(), instaName, messageId, event);
 

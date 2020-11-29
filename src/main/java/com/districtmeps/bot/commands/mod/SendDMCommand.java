@@ -80,9 +80,6 @@ public class SendDMCommand implements ICommand {
         String[] lines = reason.split("<br>");
         String message = String.join("\n", lines);
 
-        // System.out.println(message);
-        // event.getChannel().sendMessage(message).queue();
-
         membersWithRole.forEach((mem) -> {
             if (!(mem.getUser().getId().equals(event.getJDA().getSelfUser().getId()))) {
 
@@ -98,12 +95,9 @@ public class SendDMCommand implements ICommand {
                     }, failure -> {
                         count++;
                         badSends++;
-                        // System.out.println(failure.getMessage());
                         failedSendsMap.put(mem.getUser(), failure.getMessage());
-                        // System.out.println(failedSendsMap.size());
                     });
 
-                    // System.out.println(count);
                 });
             } else {
                 count++;
@@ -124,8 +118,6 @@ public class SendDMCommand implements ICommand {
                         + "/" + membersWithRole.size() + " users with role: `" + mentionedRole.getName() + "`")
                 .queue();
 
-        // System.out.println(count);
-        // System.out.println(failedSendsMap.size());
         if (failedSendsMap.size() > 0) {
             EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                     .setTitle("List of Users I could not send the message to");

@@ -183,20 +183,6 @@ public class CommandManager {
     }
 
 
-
-    // public Collection<ICommand> getCommands(int type){
-    //     Map<String, ICommand> newCommands = new HashMap<>();
-
-    //     commands.forEach((k, v)->{
-    //         if(v.getType() == type){
-    //             newCommands.put(k, v);
-    //         }
-    //     });
-
-    //     return newCommands.values();
-    // }
-    //
-
     public List<ICommand> getCommands(int type){
         List<ICommand> newCommands = new ArrayList<>();
 
@@ -221,10 +207,6 @@ public class CommandManager {
         
         final String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)" + Pattern.quote(Constants.PREFIX), "").split("\\s+");
-
-        // for(String text: split){
-        //     System.out.println(text);
-        // }
         
         final String invoke = split[0].toLowerCase();
 

@@ -39,13 +39,9 @@ public class DogCommand implements ICommand {
             String url = jsonUrl.toString();
 
             url = url.substring(1, url.length() - 1);
-            // event.getChannel().sendMessage(url).queue();
-            //event.getChannel().sendMessage(checkComp(url) + "").queue();
 
             if (!checkComp(url)) {
                 EmbedBuilder embed = EmbedUtils.embedImage(url);
-                // TODO: Make a permission check to see if the bot can send embeds if not, just
-                // plain text
                 event.getChannel().sendMessage(embed.build()).queue();
                 return;
             } else {

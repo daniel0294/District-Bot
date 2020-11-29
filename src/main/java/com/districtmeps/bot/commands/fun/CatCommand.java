@@ -38,7 +38,6 @@ public class CatCommand implements ICommand {
                     String url = document.getElementsByTag("url").first().html();
 
                 EmbedBuilder embed = EmbedUtils.embedImage(url);
-                // TODO: Make a permission check to see if the bot can send embeds if not, just plain text
                 event.getChannel().sendMessage(embed.build()).queue();
         });
 

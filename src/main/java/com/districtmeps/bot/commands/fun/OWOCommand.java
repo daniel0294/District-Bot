@@ -49,10 +49,6 @@ public class OWOCommand implements ICommand {
             String url = jsonUrl.toString();
 
             url = url.substring(1, url.length() - 1);
-
-            // EmbedBuilder embed = EmbedUtils.defaultEmbed().setTitle("OWO");
-            // embed.setDescription(url);
-            // channel.sendMessage(embed.build()).queue();
             channel.sendMessage(url).queue();
 
         });

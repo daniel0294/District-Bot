@@ -104,7 +104,7 @@ public class YTSearchCommand implements ICommand {
 
             event.getChannel().sendMessage(builder.build()).queue((m) -> {
                 event.getChannel().sendMessage("If you would like to add the song to the music playlist please do `"
-                        + Constants.PREFIX + "select <NUM>`\nYou've got 10 seconds").queue();
+                        + Constants.PREFIX + "select <NUM>`\nYou've got 15 seconds").queue();
                 ShardManager shardManager = event.getJDA().getShardManager();
                 waiter.waitForEvent(GuildMessageReceivedEvent.class, (recieved) -> {
 
@@ -119,7 +119,7 @@ public class YTSearchCommand implements ICommand {
 
                     manager.loadAndPlay(event.getChannel(),
                             "https://www.youtube.com/watch?v=" + vid.getId().getVideoId());
-                }, 10, TimeUnit.SECONDS, () -> {
+                }, 15, TimeUnit.SECONDS, () -> {
                     TextChannel tchannel = shardManager.getTextChannelById(event.getChannel().getId());
 
                     tchannel.sendMessage("I stopped listening for a reaction").queue();

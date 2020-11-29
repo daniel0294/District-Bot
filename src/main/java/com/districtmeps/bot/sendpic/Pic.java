@@ -48,10 +48,7 @@ public class Pic extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // g.setColor(Color.GREEN);
-        // g.fillRect(0, 0, 200, 100);
         try {
-            // img = ImageIO.read(new File("C:\\Users\\danie\\Desktop\\IntelliJ Projects\\VStest\\src\\media\\welcm.png"));
             img = ImageIO.read(new File("./media/welcm.png"));
             
 
@@ -60,9 +57,6 @@ public class Pic extends JPanel {
         super.paintComponent(g);
         this.setBackground(Color.WHITE);
         g.drawImage(img, 0, 0, (int) img.getWidth() / 2, (int) img.getHeight() / 2, null);
-        // System.out.println( ((int) img.getWidth()/2) + " " +
-        // ((int)img.getHeight()/2));
-
         int width = (int) img.getWidth() / 2;
         int height = (int) img.getHeight() / 2;
 
@@ -88,7 +82,6 @@ public class Pic extends JPanel {
             InputStream is = urlConn.getInputStream();
             imgimg = ImageIO.read(is);
         } catch (IOException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
@@ -101,15 +94,7 @@ public class Pic extends JPanel {
         }
 
         g.setColor(Color.WHITE);
-        // Font font = new Font("Dolce Vita Quite Regular", 0, 60);\
         Font font = new Font("Leixo-Regular", 1, 60);
-        // try {
-        //     font = Font.createFont(Font.TRUETYPE_FONT,
-        //             new File("C:\\Users\\danie\\Desktop\\IntelliJ Projects\\VStest\\src\\media\\fonts\\LEIXO-Regular.ttf"));
-        // } catch (FontFormatException | IOException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
         String text = event.getUser().getName() + "#" + event.getUser().getDiscriminator();
         Rectangle2D bounds = font.getStringBounds(text, new FontRenderContext(null, false, false));
         g.setFont(font);

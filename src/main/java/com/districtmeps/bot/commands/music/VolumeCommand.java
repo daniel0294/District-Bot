@@ -33,6 +33,8 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
  */
 public class VolumeCommand implements ICommand {
 
+    //TODO Save Volume for every server
+
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
         TextChannel channel = event.getChannel();

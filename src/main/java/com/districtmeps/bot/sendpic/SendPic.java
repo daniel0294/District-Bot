@@ -32,9 +32,6 @@ public class SendPic {
 
     public static void start(GuildMemberJoinEvent event){
 
-        //if (event.getGuild() != DistrictBot.api.getGuildById("296844096813793281"))
-			//return;
-
 		System.out.println("starting");
 		String id = event.getUser().getId();
 		JFrame f = new JFrame();
@@ -57,7 +54,6 @@ public class SendPic {
 		try {
 			ImageIO.write(bi, "png", file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("done");
@@ -65,8 +61,6 @@ public class SendPic {
 		//Message msg = null;
 		File send = new File("./media/joined/" + id + ".png");
 		if (send.exists()) {
-			//DistrictBot.api.getGuildById("296844096813793281").getTextChannelById("417570314327949313")
-					//.sendFile(send, send.getName(), null).queue();
             event.getGuild().getSystemChannel().sendFile(send, send.getName()).queue();
             
 		} else {

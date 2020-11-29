@@ -41,8 +41,6 @@ public class NekoGifCommand implements ICommand {
             url = url.substring(1, url.length() - 1);
 
             EmbedBuilder embed = EmbedUtils.embedImage(url);
-            // TODO: Make a permission check to see if the bot can send embeds if not, just
-            // plain text
             event.getChannel().sendMessage(embed.build()).queue();
 
         });
