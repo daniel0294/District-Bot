@@ -69,6 +69,7 @@ import com.districtmeps.bot.commands.normal.HelpCommand;
 import com.districtmeps.bot.commands.normal.PingCommand;
 import com.districtmeps.bot.commands.normal.ProfileCommand;
 import com.districtmeps.bot.commands.normal.ServerInfoCommand;
+import com.districtmeps.bot.commands.normal.UploadHelpCommand;
 import com.districtmeps.bot.commands.normal.UptimeCommand;
 // import com.districtmeps.bot.commands.nsfw.FutaCommand;
 // import com.districtmeps.bot.commands.nsfw.HBlastCommand;
@@ -117,6 +118,7 @@ public class CommandManager {
             addCommand(new ServerInfoCommand());
             addCommand(new UptimeCommand());
             addCommand(new GitHubCommand());
+            addCommand(new UploadHelpCommand());
 
             // Music 4
             addCommand(new JoinCommand());
