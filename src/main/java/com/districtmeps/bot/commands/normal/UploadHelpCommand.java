@@ -19,12 +19,22 @@ package com.districtmeps.bot.commands.normal;
 import java.time.Instant;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 import com.districtmeps.bot.objects.ICommand;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import me.duncte123.botcommons.messaging.EmbedUtils;
+import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message.Attachment;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -34,22 +44,22 @@ public class UploadHelpCommand implements ICommand {
 
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
-        
+
         List<Attachment> att = event.getMessage().getAttachments();
 
-        if(att.size() != 1){
+        if (att.size() != 1) {
             event.getChannel().sendMessage("Please upload only one photo").queue();
             return;
         }
 
-        if(args.size() < 1){
+        if (args.size() < 1) {
             event.getChannel().sendMessage("Please also send the link").queue();
             return;
         }
 
         String texts = "";
         for (String text : args) {
-            if(!checkLink(text)){
+            if (!checkLink(text)) {
                 event.getChannel().sendMessage("Please only send valid links").queue();
                 return;
             }
@@ -64,13 +74,40 @@ public class UploadHelpCommand implements ICommand {
         builder.setImage(att.get(0).getProxyUrl());
 
 
-        event.getChannel().sendMessage(builder.build()).queue();
-        event.getMessage().delete().queue();
-        // event.getChannel().sendMessage(att.get(0).getProxyUrl()).queue();
-        
-        logger.info(texts);
+        BufferedImage image = null;
+        try {
+            URL url = new URL(att.get(0).getProxyUrl());
+
+            URLConnection urlConn = url.openConnection();
+            urlConn.addRequestProperty("User-Agent", WebUtils.getUserAgent());
+
+            // String contentType = urlConn.getContentType();
+
+            // System.out.println("contentType:" + contentType);
+
+            InputStream is = urlConn.getInputStream();
+            image = ImageIO.read(is);
+
+            builder.setColor(averageColor(image, image.getWidth(), image.getHeight()));
+        } catch (IOException e) {
+            logger.error("Image could not be read from link");
+            builder.setColor(EmbedUtils.getDefaultColor());
+        }
 
         
+
+        event.getChannel().sendMessage(builder.build()).queue();
+
+        try{
+
+            event.getMessage().delete().queue();
+        } catch (Exception e){
+            event.getChannel().sendMessage("I could not delete the original message.").queue();
+        }
+        
+        // event.getChannel().sendMessage(att.get(0).getProxyUrl()).queue();
+
+        logger.info(texts);
 
     }
 
@@ -89,8 +126,37 @@ public class UploadHelpCommand implements ICommand {
         return 3;
     }
 
-    private boolean checkLink(String link){
+    private boolean checkLink(String link) {
         return link.startsWith("https://") || link.startsWith("http://");
     }
-    
+
+
+    public static Color averageColor(BufferedImage bi, int w,
+        int h) {
+    long sumr = 0, sumg = 0, sumb = 0;
+    for (int x = 0; x < w; x++) {
+        for (int y = 0; y < h; y++) {
+            Color pixel = new Color(bi.getRGB(x, y));
+
+            int red = pixel.getRed(), green = pixel.getGreen(), blue = pixel.getBlue();
+            
+            
+            // if((red + green + blue) < 100){
+            //     continue;
+            // }
+
+            sumr += red;
+            sumg += green;
+            sumb += blue;
+        }
+    }
+    int num = w * h;
+    float red = sumr / num;
+    float green = sumg / num;
+    float blue = sumb / num;
+    // System.out.println(red / 255 + " - " + green / 255 + " - " + blue / 255);
+
+    return new Color(red / 255, green / 255, blue / 255);
+}
+
 }
